@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Результаты поиска вакансий на HH</title>
+    <style>
+        section{
+            display: grid;
+            gap: 20px;
+            grid-template-columns: repeat(3, 1fr);
+        }
+    </style>
+</head>
+<body>
+    <h1>Найдено {{count_jobs}} вакансий по запросу: "{{result}}"</h1>
+    <h3><a href="/export">Сохранить данные в CSV-файл и приступить к новому поиску</a></h3>
+    <section>
+        <h4>Название вакансии</h4>
+        <h4>Компания</h4>
+        <h4>Местонахождение</h4>
+        {% for job in jobs %}
+            <span><a href="{{job.link}}" target="_blank">{{job.title}}</a></span>
+            <span>{{job.company}}</span>
+            <span>{{job.city}}</span>
+        {% endfor %}
+    </section>
+</body>
+</html>
